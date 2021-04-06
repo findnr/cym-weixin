@@ -4,6 +4,6 @@
 
  class HttpClient{
      public function test(){
-         return "HttpClient Test.12321321";
+         return "HttpClient Test.";
      }
  }
