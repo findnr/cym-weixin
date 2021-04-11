@@ -9,33 +9,39 @@
 namespace WeixinPhpServerApi\encrypted;
 
 use WeixinPhpServerApi\encrypted\ErrorCode;
+use WeixinPhpServerApi\http\HttpClient;
 
 class UnEncrypted
 {
     private $appid;
 	private $sessionKey;
+	private $iv;
+	private $encryptedData;
 
 	/**
 	 * 构造函数
 	 * @param $sessionKey string 用户在小程序登录后获取的会话密钥
 	 * @param $appid string 小程序的appid
 	 */
-	public function __construct( $appid, $sessionKey)
+	public function __construct( $arr=[])
 	{
-		$this->sessionKey = $sessionKey;
-		$this->appid = $appid;
+		if(count($arr) == 0 || empty($arr['appid']) || empty($arr['secret']) || empty($arr['code']) || empty($arr['iv']) || empty($arr['encryptedData'])) return ErrorCode::$DataError;
+		$sessionKeyObj=new HttpClient();
+		$sessionKeyObj=$sessionKeyObj->getWeixinSession($arr);
+		$this->iv=$arr['iv'];
+		$this->encryptedData=$arr['encryptedData'];
+		$this->sessionKey = $sessionKeyObj['session_key'];
+		$this->appid = $arr['appid'];
 	}
 
 
 	/**
 	 * 检验数据的真实性，并且获取解密后的明文.
-	 * @param $encryptedData string 加密的用户数据
-	 * @param $iv string 与用户数据一同返回的初始向量
 	 * @param $data string 解密后的原文
      *
 	 * @return int 成功0，失败返回对应的错误码
 	 */
-	public function decryptData( $encryptedData, $iv, &$data )
+	public function decryptData( &$data )
 	{
 		if (strlen($this->sessionKey) != 24) {
 			return ErrorCode::$IllegalAesKey;
@@ -43,12 +49,12 @@ class UnEncrypted
 		$aesKey=base64_decode($this->sessionKey);
 
         
-		if (strlen($iv) != 24) {
+		if (strlen($this->iv) != 24) {
 			return ErrorCode::$IllegalIv;
 		}
-		$aesIV=base64_decode($iv);
+		$aesIV=base64_decode($this->iv);
 
-		$aesCipher=base64_decode($encryptedData);
+		$aesCipher=base64_decode($this->encryptedData);
 
 		$result=openssl_decrypt( $aesCipher, "AES-128-CBC", $aesKey, 1, $aesIV);
 
