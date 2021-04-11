@@ -20,8 +20,7 @@ class UnEncrypted
 
 	/**
 	 * 构造函数
-	 * @param $sessionKey string 用户在小程序登录后获取的会话密钥
-	 * @param $appid string 小程序的appid
+	 * @param $$arr array $arr=['appid'=>'','secret'=>'','iv'=>'','encryptedData'=>''] 
 	 */
 	public function __construct( $arr=[])
 	{

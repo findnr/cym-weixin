@@ -6,6 +6,12 @@
     public function test(){
         return "HttpClient Test.";
     }
+    /**
+	 * 获取登录信息
+	 * @param $arr=[] $arr['appid'];$arr['secret'];$arr['code'];
+     * 
+	 * @return array 获取到的数据
+	 */
     public function getWeixinSession($arr=[]) {
         $appid=$arr['appid'];
         $secret=$arr['secret'];
