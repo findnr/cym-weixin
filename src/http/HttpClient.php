@@ -33,35 +33,4 @@
         $wx_token_arr=json_decode($wx_token_string,true);
         return $wx_token_arr;
     }
-    /**
-	 * 获取身份证信息信息
-	 * @param $arr=[] $arr['appid'];$arr['secret'];$arr['code'];
-     * 
-	 * @return array 获取到的token数据
-	 */
-    public function getIdCar($data=[]){
-        $url="https://api.weixin.qq.com/cv/ocr/idcard";
-        return $this->_sed_post($url,$data);
-    }
-    /**
-	 * 发送POST请示
-	 * @param $url string $arr['appid'];$arr['secret'];$arr['code']
-     * @param $data=[] array
-     * 
-	 * @return array 获取到的token数据
-	 */
-    private function _sed_post($url='',$data=[]){
-        $postData=http_build_query($data);
-        $options=[
-            'https'=>[
-                'method'=>'POST',
-                'header' => 'Content-type:application/x-www-form-urlencoded',
-                'content' => $postData,
-                'timeout' => 15 * 60
-            ]
-        ];
-        $context = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        return $result;
-    }
  }
