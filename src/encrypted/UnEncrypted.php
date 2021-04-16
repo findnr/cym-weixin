@@ -8,8 +8,8 @@
 
 namespace CymWeixin\encrypted;
 
-use WeixinServer\encrypted\ErrorCode;
-use WeixinServer\http\HttpClient;
+use CymWeixin\encrypted\ErrorCode;
+use CymWeixin\http\HttpClient;
 
 class UnEncrypted
 {
