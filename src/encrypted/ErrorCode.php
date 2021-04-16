@@ -1,5 +1,7 @@
 <?php
-namespace WeixinPhpServerApi\encrypted;
+
+namespace WeixinServer\encrypted;
+
 /**
  * error code 说明.
  * <ul>

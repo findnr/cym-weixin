@@ -2,7 +2,7 @@
 
 require_once "../vendor/autoload.php";
 
-use WeixinPhpServerApi\Api;
+use WeixinServer\Api;
 
 $ttt = new Api();
 $test = $ttt->http();

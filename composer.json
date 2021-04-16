@@ -1,10 +1,10 @@
 {
-    "name": "findnr/weixin-php-server-api",
+    "name": "findnr/weixin-server",
     "description": "this is weixin server api group.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "WeixinPhpServerApi\\":"src/"
+            "WeixinServer\\": "src/"
         }
     },
     "authors": [
