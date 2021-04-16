@@ -1,6 +1,6 @@
 <?php
 
-namespace WeixinServer\encrypted;
+namespace CymWeixin\encrypted;
 
 /**
  * error code 说明.

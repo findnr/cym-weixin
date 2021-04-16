@@ -1,8 +1,8 @@
 <?php
 
-namespace WeixinServer;
+namespace CymWeixin;
 
-use WeixinServer\http\HttpClient;
+use CymWeixin\http\HttpClient;
 
 class Api
 {

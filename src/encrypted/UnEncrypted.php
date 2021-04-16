@@ -6,7 +6,7 @@
  * @copyright Copyright (c) 1998-2014 Tencent Inc.
  */
 
-namespace WeixinServer\encrypted;
+namespace CymWeixin\encrypted;
 
 use WeixinServer\encrypted\ErrorCode;
 use WeixinServer\http\HttpClient;

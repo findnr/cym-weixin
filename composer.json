@@ -1,10 +1,10 @@
 {
-    "name": "findnr/weixin-server",
+    "name": "findnr/cym-weixin",
     "description": "this is weixin server api group.",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "WeixinServer\\": "src/"
+            "CymWeixin\\": "src/"
         }
     },
     "authors": [
