@@ -1,6 +1,6 @@
 <?php
 
-namespace CymWenxin\http;
+namespace CymWeixin\http;
 
 class HttpClient
 {
